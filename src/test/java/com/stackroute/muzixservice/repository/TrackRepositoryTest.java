@@ -68,15 +68,7 @@ public class TrackRepositoryTest {
             Assert.assertEquals("102",list.get(0).getTrackId());
         }
 
-        @Test
-        public  void  testGetTrackByname()
-        {
 
-            Track t= new Track("101","horror","breathtaking");
-            trackRepository.save(t);
-            Track fetchtrack = trackRepository.findByTrackName(t.getTrackname());
-            Assert.assertEquals("101",fetchtrack.getTrackId());
-        }
 
 
         @Test

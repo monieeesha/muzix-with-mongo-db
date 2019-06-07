@@ -46,7 +46,10 @@ public class TrackController {
     @GetMapping("track")
     public ResponseEntity<?> getAllTracks()
     {
-        return new ResponseEntity<List<Track>>(trackservice.getAllTracks(),HttpStatus.OK);
+          ResponseEntity responseEntity;
+
+          return new ResponseEntity<List<Track>>(trackservice.getAllTracks(), HttpStatus.OK);
+
     }
 
     @PutMapping("track/{id}/{comment}")
@@ -71,17 +74,6 @@ public class TrackController {
             responseEntity=new ResponseEntity<Track>(deletetrack, HttpStatus.OK);
             return responseEntity;
     }
-    @PostMapping("track/{id}")
-    public   ResponseEntity<?>   findByTrackName(@PathVariable("id") String name)throws TrackNotFoundExceptions
-    {
 
-
-         ResponseEntity responseEntity;
-         Track newTrackInfo =null;
-         newTrackInfo =trackservice.findByTrackName(name);
-         responseEntity=new ResponseEntity<Track>(newTrackInfo, HttpStatus.OK);
-         return responseEntity;
-
-    }
 
 }

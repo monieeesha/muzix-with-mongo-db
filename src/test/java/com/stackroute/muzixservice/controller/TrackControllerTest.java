@@ -113,24 +113,6 @@ public class TrackControllerTest
                 .andDo(MockMvcResultHandlers.print());
                verify(trackservice,times(1)).updateTrack((String)any(),(String)any());
     }
-    @Test
-    public void getByNameTrack() throws TrackNotFoundExceptions,Exception {
-        when(trackservice.findByTrackName(track.getTrackname())).thenReturn(track);
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/track/id")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andDo(MockMvcResultHandlers.print());
-        verify(trackservice,times(1)).findByTrackName((String)any());
-    }
-    @Test
-    public void getByNameTrackFailure() throws TrackNotFoundExceptions,Exception {
-        when(trackservice.findByTrackName(any())).thenThrow(TrackNotFoundExceptions.class);
-        mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/track/id")
-                .contentType(MediaType.APPLICATION_JSON).content(asJsonString(track)))
-               .andExpect(MockMvcResultMatchers.status().isConflict())
-                .andDo(MockMvcResultHandlers.print());
-        verify(trackservice,times(1)).findByTrackName((String)any());
-    }
 
     @Test
     public void deleteTrack() throws TrackNotFoundExceptions,Exception {

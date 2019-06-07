@@ -137,27 +137,7 @@ public class TrackserviceTest {
         verify(trackRepository,times(1)).findById(track.getTrackId());
 
     }
-   @Test
-    public void  TrackByname()throws  TrackNotFoundExceptions
 
-   {
-
-       when(trackRepository.findByTrackName(track.getTrackname())).thenReturn(track);
-       Track newtrack= trackService.findByTrackName(track.getTrackname());
-       Assert.assertEquals("101",track.getTrackId());
-       verify(trackRepository,times(1)).findByTrackName(track.getTrackname());
-
-   }
-
-    @Test(expected = TrackNotFoundExceptions.class)
-    public void TrackBynameTestFailure() throws TrackNotFoundExceptions {
-
-        when(trackRepository.findByTrackName(any())).thenReturn(null);
-        Track newtrack= trackService.findByTrackName(track.getTrackname());
-        System.out.println(newtrack);
-        verify(trackRepository,times(1)).findByTrackName(track.getTrackname());
-
-    }
 
 
 
